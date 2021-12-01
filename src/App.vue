@@ -9,6 +9,35 @@
         <input type="text" class="add-task__input">
         <button class="btn btn_submit" @click="addTask">Submit</button>
       </div>
+      <div class="tasks-container">
+        <div class="task-card">
+          <div class="task-card__content">
+              <h2 class="task-card__text">Play games</h2>
+              <div class="task-card__actions">
+                <button class="btn btn_change">✎</button>
+                <button class="btn btn_delete">X</button>
+              </div>
+          </div>
+        </div>
+        <div class="task-card">
+          <div class="task-card__content">
+              <h2 class="task-card__text">Dinner</h2>
+              <div class="task-card__actions">
+                <button class="btn btn_change">✎</button>
+                <button class="btn btn_delete">X</button>
+              </div>
+          </div>
+        </div>
+        <div class="task-card">
+          <div class="task-card__content">
+              <h2 class="task-card__text">Do homework</h2>
+              <div class="task-card__actions">
+                <button class="btn btn_change">✎</button>
+                <button class="btn btn_delete">X</button>
+              </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -62,7 +91,6 @@ body{
   justify-content: center;
   align-items: top;
   min-height: 100vh;
-  
 }
 
 .header{
@@ -91,7 +119,6 @@ body{
 
 .add-task__input{
   padding: 0.5rem;
-  /* border: 1px solid #000000; */
   border-radius: var(--app-border-radius);
   border: none;
   background: #f1f1f1;
@@ -115,5 +142,28 @@ body{
   background: #3f89b4;
 }
 
+.btn_change, .btn_delete{
+  color: #363636;
+}
+
+.btn_delete{
+  margin-left: 1rem;
+}
+
+.task-card {
+  padding: 0.5rem 0.2rem;
+  border-bottom: 1px solid #bbbbbb;
+}
+
+.task-card__content{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+.task-card__text{
+  font-weight: 400;
+}
 
 </style>
