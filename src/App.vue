@@ -3,11 +3,11 @@
     <div class="container">
       <div class="header">
         <h1 class="title">Tasks to do</h1>
-        <button class="plus-btn">+</button>
+        <button class="btn btn_add">+</button>
       </div>
       <div class="add-task">
         <input type="text" class="add-task__input">
-        <button class="add-task__btn">Submit</button>
+        <button class="btn btn_submit">Submit</button>
       </div>
     </div>
   </div>
@@ -52,6 +52,12 @@ body{
   
 }
 
+.header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .container{
   background: #ffffff;
   min-width: 30rem;
@@ -69,5 +75,30 @@ body{
   justify-content: space-between;
   align-items: center;
 }
+
+.add-task__input{
+  padding: 0.5rem;
+  border: 1px solid #000000;
+  border-radius: 5px;
+
+}
+
+.btn {
+  border: none;
+  color: #ffffff;
+  padding: 0.7rem 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.btn_add{
+  background: #6add5b;
+}
+
+.btn_submit {
+  background: #3f89b4;
+}
+
 
 </style>
