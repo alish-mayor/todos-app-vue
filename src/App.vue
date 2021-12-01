@@ -10,7 +10,7 @@
         <button class="btn btn_submit" @click="addTask">Submit</button>
       </div>
       <div class="tasks-container">
-        <div class="task-card" v-for="(task,index) in tasks" :key="index">
+        <div class="task-card" :class="done" v-for="(task,index) in tasks" :key="index" @click="doneTask">
           <div class="task-card__content">
               <h2 class="task-card__text">{{ task }}</h2>
               <div class="task-card__actions">
@@ -36,6 +36,7 @@ export default Vue.extend({
       showInput: false,
       taskText: '',
       index: 0,
+      isDone: false,
     }
   },
   components: {
@@ -52,6 +53,14 @@ export default Vue.extend({
     }, 
     deleteTask(){
       this.tasks.splice(this.index, 1);
+    },
+    doneTask(){
+      this.isDone = !this.isDone;
+    }
+  },
+  computed: {
+    done(){
+      return this.isDone ? 'done' : '' 
     }
   }
 });
@@ -143,6 +152,14 @@ body{
 .task-card {
   padding: 0.5rem 0.2rem;
   border-bottom: 1px solid #bbbbbb;
+}
+
+.task-card.done {
+  color: #b8b8b8;
+}
+
+.task-card.done h2{
+  text-decoration: line-through;
 }
 
 .task-card__content{
