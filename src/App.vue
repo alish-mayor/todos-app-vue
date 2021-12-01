@@ -6,31 +6,13 @@
         <button class="btn btn_add" @click="openInput">+</button>
       </div>
       <div class="add-task" v-if="showInput">
-        <input type="text" class="add-task__input">
+        <input type="text" class="add-task__input" v-model="taskText">
         <button class="btn btn_submit" @click="addTask">Submit</button>
       </div>
       <div class="tasks-container">
-        <div class="task-card">
+        <div class="task-card" v-for="(task,index) in tasks" :key="index">
           <div class="task-card__content">
-              <h2 class="task-card__text">Play games</h2>
-              <div class="task-card__actions">
-                <button class="btn btn_change">✎</button>
-                <button class="btn btn_delete">X</button>
-              </div>
-          </div>
-        </div>
-        <div class="task-card">
-          <div class="task-card__content">
-              <h2 class="task-card__text">Dinner</h2>
-              <div class="task-card__actions">
-                <button class="btn btn_change">✎</button>
-                <button class="btn btn_delete">X</button>
-              </div>
-          </div>
-        </div>
-        <div class="task-card">
-          <div class="task-card__content">
-              <h2 class="task-card__text">Do homework</h2>
+              <h2 class="task-card__text">{{ task }}</h2>
               <div class="task-card__actions">
                 <button class="btn btn_change">✎</button>
                 <button class="btn btn_delete">X</button>
@@ -50,7 +32,9 @@ export default Vue.extend({
   name: "App",
   data() {
     return {
+      tasks: ['hello', 'gg'],
       showInput: false,
+      taskText: '',
     }
   },
   components: {
@@ -61,7 +45,9 @@ export default Vue.extend({
       this.showInput = true;
     },
     addTask(){
+      this.tasks.push(this.taskText);
       this.showInput = false;
+      this.taskText = ''
     }
   }
 });
