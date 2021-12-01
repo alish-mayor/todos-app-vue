@@ -3,11 +3,11 @@
     <div class="container">
       <div class="header">
         <h1 class="title">Tasks to do</h1>
-        <button class="btn btn_add">+</button>
+        <button class="btn btn_add" @click="openInput">+</button>
       </div>
-      <div class="add-task">
+      <div class="add-task" v-if="showInput">
         <input type="text" class="add-task__input">
-        <button class="btn btn_submit">Submit</button>
+        <button class="btn btn_submit" @click="addTask">Submit</button>
       </div>
     </div>
   </div>
@@ -19,9 +19,22 @@ import Vue from "vue";
 
 export default Vue.extend({
   name: "App",
+  data() {
+    return {
+      showInput: false,
+    }
+  },
   components: {
     
   },
+  methods: {
+    openInput(){
+      this.showInput = true;
+    },
+    addTask(){
+      this.showInput = false;
+    }
+  }
 });
 </script>
 
@@ -40,7 +53,7 @@ export default Vue.extend({
 
 :root{
   font-size: 10px;
-  
+  --app-border-radius: 5px;
 }
 
 body{
@@ -61,8 +74,8 @@ body{
 .container{
   background: #ffffff;
   min-width: 30rem;
-  padding: 1rem;
-  border-radius: 0.5rem;
+  padding: 1.5rem;
+  border-radius: var(--app-border-radius);
 }
 
 .title{
@@ -78,16 +91,18 @@ body{
 
 .add-task__input{
   padding: 0.5rem;
-  border: 1px solid #000000;
-  border-radius: 5px;
-
+  /* border: 1px solid #000000; */
+  border-radius: var(--app-border-radius);
+  border: none;
+  background: #f1f1f1;
+  font-size: 1.5rem;
 }
 
 .btn {
   border: none;
   color: #ffffff;
   padding: 0.7rem 1rem;
-  border-radius: 5px;
+  border-radius: var(--app-border-radius);
   cursor: pointer;
   font-family: inherit;
 }
