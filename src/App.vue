@@ -15,7 +15,7 @@
               <h2 class="task-card__text">{{ task }}</h2>
               <div class="task-card__actions">
                 <button class="btn btn_change">✎</button>
-                <button class="btn btn_delete">X</button>
+                <button class="btn btn_delete" @click="deleteTask(index)">X</button>
               </div>
           </div>
         </div>
@@ -32,9 +32,10 @@ export default Vue.extend({
   name: "App",
   data() {
     return {
-      tasks: ['hello', 'gg'],
+      tasks: [],
       showInput: false,
       taskText: '',
+      index: 0,
     }
   },
   components: {
@@ -48,6 +49,9 @@ export default Vue.extend({
       this.tasks.push(this.taskText);
       this.showInput = false;
       this.taskText = ''
+    }, 
+    deleteTask(){
+      this.tasks.splice(this.index, 1);
     }
   }
 });
