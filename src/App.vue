@@ -3,9 +3,8 @@
     <div class="container">
       <div class="header">
         <h1 class="title">Tasks to do</h1>
-        <button class="btn btn_add" @click="openInput">+</button>
       </div>
-      <div class="add-task" v-if="showInput">
+      <div class="add-task">
         <input type="text" class="add-task__input" v-model="taskText">
         <button class="btn btn_submit" @click="addTask">Submit</button>
       </div>
@@ -14,7 +13,6 @@
           <div class="task-card__content">
               <h2 class="task-card__text">{{ task }}</h2>
               <div class="task-card__actions">
-                <button class="btn btn_change">✎</button>
                 <button class="btn btn_delete" @click="deleteTask(index)">X</button>
               </div>
           </div>
@@ -56,7 +54,7 @@ export default Vue.extend({
     },
     doneTask(){
       this.isDone = !this.isDone;
-    }
+    },
   },
   computed: {
     done(){
@@ -94,7 +92,7 @@ body{
 
 .header{
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
 }
 
@@ -106,7 +104,7 @@ body{
 }
 
 .title{
-  display: inline-block;
+  display: block;
   font-weight: 400;
 }
 
