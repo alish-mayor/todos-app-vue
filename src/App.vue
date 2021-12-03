@@ -10,7 +10,7 @@
         <v-container class="pa-4">
           <h3 class="font-weight-light text-body-2 text-center">{{ countCompleted }} out of {{tasks.length}} tasks completed</h3>
           <div class="d-flex flex-column">
-            <task-card v-for="(task,index) in tasks" :key="index" :taskText="task.text"></task-card>
+            <task-card v-for="(task,index) in tasks" :key="index" :index="index" :taskText="task.taskText"></task-card>
           </div>
         </v-container>
       </v-container>
@@ -30,27 +30,22 @@ export default Vue.extend({
   },
 
   data: () => ({
-    tasks: [
-    {
-      text: 'home',
-      checked: false,
-    }, 
-    {
-      text: 'some',
-      checked: false,
-    }],
     taskText: '',
     countCompleted: 0,
   }),
   methods: {
     addTask(){
-      this.tasks.push(
-        {
-          text: this.taskText,
-          checked: false,
-        }
-    );
+      this.$store.commit('addTask', 
+      {
+        taskText: this.taskText,
+        checked: false,
+      })
       this.taskText = '';
+    }
+  },
+  computed: {
+    tasks(){
+      return this.$store.state.tasks;
     }
   }
 });

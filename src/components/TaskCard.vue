@@ -11,7 +11,7 @@ export default({
     name: 'TaskCard',
     props:{
         taskText: String,
-        
+        index: Number,
     },
     data () {
         return {
@@ -20,8 +20,19 @@ export default({
     },
     methods: {
         deleteTask(index){
-            this.tasks.splice(index, 1);
+            this.$store.commit('deleteTask', index)
         },
+        increase(){
+            console.log('increase');
+        },
+        decrease(){
+            console.log('decrease');
+        }
     },
+    computed: {
+        completed(){
+            return this.checked ? alert('yes') : alert('no');
+        }
+    }
 })
 </script>

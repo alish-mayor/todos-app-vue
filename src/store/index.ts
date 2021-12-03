@@ -4,8 +4,21 @@ import Vuex from "vuex";
 Vue.use(Vuex);
 
 export default new Vuex.Store({
-  state: {},
-  mutations: {},
+  state: {
+    tasks: [],
+    countCompleted: 0,
+  },
+  mutations: {
+    addTask(state, task){
+      state.tasks.push({
+        taskText: task.taskText,
+        checked: task.checked
+      })
+    },
+    deleteTask(state, index){
+      state.tasks.splice(index, 1);
+    }
+  },
   actions: {},
   modules: {},
 });
