@@ -7,7 +7,12 @@
           <input type="text" placeholder="enter your task..." class="app-input pa-3 grey lighten-4 rounded rounded-r-0" v-model="taskText" @keydown.enter="addTask">
           <input type="button" value="submit" class="pa-3 green white--text rounded rounded-l-0" @click="addTask">
         </v-container>
-        <task-card :tasks="tasks"></task-card>
+        <v-container class="pa-4">
+          <h3 class="font-weight-light text-body-2 text-center">{{ countCompleted }} out of {{tasks.length}} tasks completed</h3>
+          <div class="d-flex flex-column">
+            <task-card v-for="(task,index) in tasks" :key="index" :taskText="task.text"></task-card>
+          </div>
+        </v-container>
       </v-container>
     </v-main>
   </v-app>
@@ -25,12 +30,26 @@ export default Vue.extend({
   },
 
   data: () => ({
-    tasks: ['do homework', 'cook dinner', 'set property'],
+    tasks: [
+    {
+      text: 'home',
+      checked: false,
+    }, 
+    {
+      text: 'some',
+      checked: false,
+    }],
     taskText: '',
+    countCompleted: 0,
   }),
   methods: {
     addTask(){
-      this.tasks.push(this.taskText);
+      this.tasks.push(
+        {
+          text: this.taskText,
+          checked: false,
+        }
+    );
       this.taskText = '';
     }
   }
