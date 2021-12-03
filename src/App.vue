@@ -7,16 +7,7 @@
           <input type="text" placeholder="enter your task..." class="app-input pa-3 grey lighten-4 rounded rounded-r-0" v-model="taskText" @keydown.enter="addTask">
           <input type="button" value="submit" class="pa-3 green white--text rounded rounded-l-0" @click="addTask">
         </v-container>
-        <v-container class="pa-4">
-          <h3 class="font-weight-light text-body-2 text-center">2 out of {{tasks.length}} tasks completed</h3>
-          <div class="d-flex flex-column">
-            <v-card class="px-4 py-3 d-block mx-auto mt-3 text-center" width="280px" v-for="(task,index) in tasks" :key="index">
-              <v-checkbox :label="task" class="ma-0"></v-checkbox>
-              <v-btn class="font-weight-light text-capitalize">Change</v-btn>
-              <v-btn class="ml-4 font-weight-light red white--text text-capitalize" @click="deleteTask(index)">Delete</v-btn>
-            </v-card>
-          </div>
-        </v-container>
+        <task-card :tasks="tasks"></task-card>
       </v-container>
     </v-main>
   </v-app>
@@ -24,12 +15,13 @@
 
 <script lang="ts">
 import Vue from "vue";
+import taskCard from './components/TaskCard.vue';
 
 export default Vue.extend({
   name: "App",
 
   components: {
-    
+    taskCard
   },
 
   data: () => ({
@@ -40,9 +32,6 @@ export default Vue.extend({
     addTask(){
       this.tasks.push(this.taskText);
       this.taskText = '';
-    },
-    deleteTask(index){
-      this.tasks.splice(index, 1);
     }
   }
 });
