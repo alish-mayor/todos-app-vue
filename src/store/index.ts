@@ -17,6 +17,12 @@ export default new Vuex.Store({
     },
     deleteTask(state, index){
       state.tasks.splice(index, 1);
+    },
+    increase(state){
+      state.countCompleted++;
+    },
+    decrease(state){
+      state.countCompleted--;
     }
   },
   actions: {},

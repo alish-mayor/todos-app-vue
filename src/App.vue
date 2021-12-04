@@ -31,7 +31,6 @@ export default Vue.extend({
 
   data: () => ({
     taskText: '',
-    countCompleted: 0,
   }),
   methods: {
     addTask(){
@@ -46,6 +45,9 @@ export default Vue.extend({
   computed: {
     tasks(){
       return this.$store.state.tasks;
+    },
+    countCompleted(){
+      return this.$store.state.countCompleted;
     }
   }
 });
