@@ -10,7 +10,7 @@
         <v-container class="pa-4">
           <h3 class="font-weight-light text-body-2 text-center">{{ countCompleted }} out of {{tasks.length}} tasks completed</h3>
           <div class="d-flex flex-column">
-            <task-card v-for="(task,index) in tasks" :key="index" :index="index" :taskText="task.taskText"></task-card>
+            <task-card v-for="(task,index) in tasks" :key="index" :index="index" :taskText="task.taskText" :checked="task.checked"></task-card>
           </div>
         </v-container>
       </v-container>

@@ -12,21 +12,21 @@ export default({
     props:{
         taskText: String,
         index: Number,
+        checked: Boolean,
     },
     data () {
         return {
-            checked: false,
         }
     },
     methods: {
         deleteTask(index){
-            this.$store.commit('deleteTask', index)
+            this.$store.commit('deleteTask', index);
+            if(this.checked) this.$store.commit('decrease', index);
         },
         checkCompleted(e, index){
             if(this.checked) this.$store.commit('increase', index); 
             else this.$store.commit('decrease', index);
         }
-
     }
 })
 </script>
