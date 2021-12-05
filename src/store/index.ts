@@ -1,5 +1,6 @@
 import Vue from "vue";
 import Vuex from "vuex";
+import createPersistedState from "vuex-persistedstate";
 
 Vue.use(Vuex);
 
@@ -18,13 +19,16 @@ export default new Vuex.Store({
     deleteTask(state, index){
       state.tasks.splice(index, 1);
     },
-    increase(state){
+    increase(state, index){
       state.countCompleted++;
+      state.tasks[index].checked = true;
     },
-    decrease(state){
+    decrease(state, index){
       state.countCompleted--;
+      state.tasks[index].checked = false;
     }
   },
   actions: {},
   modules: {},
+  plugins: [createPersistedState()]
 });
