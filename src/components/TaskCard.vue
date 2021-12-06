@@ -1,5 +1,5 @@
 <template>
-        <v-card class="px-4 py-3 d-block mx-auto mt-3 text-center" width="280px">
+        <v-card class="px-4 py-3 d-block mx-auto mt-3 text-center" width="280px" :class="darker">
             <v-checkbox :label="taskText" class="ma-0" v-model="checked" @click="checkCompleted($event, index)"></v-checkbox>
             <v-btn class="font-weight-light text-capitalize">Change</v-btn>
             <v-btn class="ml-4 font-weight-light red white--text text-capitalize" @click="deleteTask(index)">Delete</v-btn>
@@ -27,6 +27,11 @@ export default({
             if(this.checked) this.$store.commit('increase', index); 
             else this.$store.commit('decrease', index);
         }
+    },
+    computed : {
+        darker(){
+            return this.checked ? 'grey lighten-3' : ' ';
+        },
     }
 })
 </script>
