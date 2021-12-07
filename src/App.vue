@@ -21,6 +21,7 @@
 <script lang="ts">
 import Vue from "vue";
 import taskCard from './components/TaskCard.vue';
+import store from './store/index.js';
 
 export default Vue.extend({
   name: "App",
@@ -28,7 +29,7 @@ export default Vue.extend({
   components: {
     taskCard
   },
-
+  store,
   data: () => ({
     taskText: '',
   }),
