@@ -18,7 +18,7 @@
   </v-app>
 </template>
 
-<script lang="ts">
+<script>
 import Vue from "vue";
 import taskCard from './components/TaskCard.vue';
 import store from './store/index.js';
