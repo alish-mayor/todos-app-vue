@@ -3,9 +3,9 @@
             <v-checkbox :label="taskText" class="mb-2 mt-0" v-model="checked" @click="checkCompleted($event, index)"></v-checkbox>
             <v-btn class="font-weight-light text-capitalize" @click="overlay = !overlay">Change</v-btn>
             <v-btn class="ml-4 font-weight-light red white--text text-capitalize" @click="deleteTask(index)">Delete</v-btn>
-            <v-overlay absolute="true" :value="overlay">
-                <input type="text" class="grey lighten-3 px-2 py-1 rounded d-block mb-2" placeholder="change task...">
-                <v-btn color="success" @click="overlay = false" class="text-capitalize font-weight-light">Submit</v-btn>
+            <v-overlay absolute :value="overlay">
+                <input type="text" class="grey lighten-3 px-2 py-1 rounded d-block mb-2" placeholder="change task..." v-model="newText">
+                <v-btn color="success" @click="changeTask(index)" class="text-capitalize font-weight-light">Submit</v-btn>
             </v-overlay>
         </v-card>
 </template>
@@ -21,6 +21,7 @@ export default({
     data () {
         return {
             overlay: false,
+            newText: '',
         }
     },
     methods: {
@@ -31,6 +32,15 @@ export default({
         checkCompleted(e, index){
             if(this.checked) this.$store.commit('increase', index); 
             else this.$store.commit('decrease', index);
+        },
+        changeTask(index){
+            this.$store.commit('changeTask', 
+            {
+                index: index,
+                taskText: this.newText,
+            });
+            this.overlay = false;
+            this.newText = '';
         }
     },
     computed : {
