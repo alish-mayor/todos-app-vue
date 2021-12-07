@@ -21,10 +21,12 @@ export default new Vuex.Store({
     },
     increase(state, index){
       state.countCompleted++;
+      if(!state.tasks[index]) return;
       state.tasks[index].checked = true;
     },
     decrease(state, index){
       state.countCompleted--;
+      if(!state.tasks[index]) return;
       state.tasks[index].checked = false;
     }
   },
