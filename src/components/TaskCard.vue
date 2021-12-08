@@ -27,7 +27,7 @@ export default({
     methods: {
         deleteTask(index){
             this.$store.commit('deleteTask', index);
-            if(this.checked) this.$store.commit('decrease', index);
+            if(this.checked) this.$store.commit('decrease');
         },
         checkCompleted(e, index){
             if(this.checked) this.$store.commit('increase', index); 
