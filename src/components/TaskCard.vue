@@ -4,7 +4,7 @@
             <v-btn class="font-weight-light text-capitalize" @click="overlay = !overlay">Change</v-btn>
             <v-btn class="ml-4 font-weight-light red white--text text-capitalize" @click="deleteTask(index)">Delete</v-btn>
             <v-overlay absolute :value="overlay">
-                <input type="text" class="grey lighten-3 px-2 py-1 rounded d-block mb-2" placeholder="change task..." v-model="newText">
+                <input type="text" class="grey lighten-3 px-2 py-1 rounded d-block mb-2" placeholder="change task..." v-model="newText" @keydown.enter="changeTask(index)">
                 <v-btn color="success" @click="changeTask(index)" class="text-capitalize font-weight-light">Submit</v-btn>
             </v-overlay>
         </v-card>

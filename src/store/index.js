@@ -32,6 +32,10 @@ export default new Vuex.Store({
     changeTask(state, task) {
       state.tasks[task.index].taskText = task.taskText;
     },
+    deleteAll(state) {
+      state.tasks = [];
+      state.countCompleted = 0;
+    },
   },
   actions: {},
   modules: {},

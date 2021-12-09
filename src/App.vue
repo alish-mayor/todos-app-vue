@@ -7,6 +7,9 @@
           <input type="text" placeholder="enter your task..." class="app-input pa-3 grey lighten-4 rounded rounded-r-0" v-model="taskText" @keydown.enter="addTask">
           <input type="button" value="Submit" class="pa-3 green white--text rounded rounded-l-0" @click="addTask">
         </v-container>
+        <v-container class="text-center">
+          <v-btn color="error" class="font-weight-normal" v-if="tasks.length > 0" @click="deleteAll">Delete all</v-btn>
+        </v-container>
         <v-container class="pa-4">
           <h3 class="font-weight-light text-body-2 text-center">{{ countCompleted }} out of {{tasks.length}} tasks completed</h3>
           <div class="d-flex flex-column">
@@ -41,6 +44,9 @@ export default Vue.extend({
         checked: false,
       })
       this.taskText = '';
+    },
+    deleteAll(){
+      this.$store.commit('deleteAll');
     }
   },
   computed: {
